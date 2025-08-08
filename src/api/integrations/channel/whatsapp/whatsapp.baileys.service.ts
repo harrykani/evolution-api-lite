@@ -572,6 +572,16 @@ export class BaileysStartupService extends ChannelStartupService {
 
     this.client = makeWASocket(socketConfig);
 
+    this.client.offerCall = async (...args) => {
+      console.log('[Stub] offerCall chamado — recurso desativado.');
+      return { status: 'disabled', args };
+    };
+
+    this.client.terminateCall = async (...args) => {
+      console.log('[Stub] terminateCall chamado — recurso desativado.');
+      return { status: 'disabled', args };
+    };
+    
     if (this.localSettings.wavoipToken && this.localSettings.wavoipToken.length > 0) {
       useVoiceCallsBaileys(this.localSettings.wavoipToken, this.client, this.connectionStatus.state as any, true);
     }
