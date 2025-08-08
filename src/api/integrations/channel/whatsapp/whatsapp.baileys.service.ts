@@ -570,14 +570,14 @@ export class BaileysStartupService extends ChannelStartupService {
 
     this.endSession = false;
 
-    this.client = makeWASocket(socketConfig);
+    this.client = makeWASocket(socketConfig) as any;
 
-    this.client.offerCall = async (...args) => {
+    this.client.offerCall = async (...args: any[]) => {
       console.log('[Stub] offerCall chamado — recurso desativado.');
       return { status: 'disabled', args };
     };
 
-    this.client.terminateCall = async (...args) => {
+    this.client.terminateCall = async (...args: any[]) => {
       console.log('[Stub] terminateCall chamado — recurso desativado.');
       return { status: 'disabled', args };
     };
